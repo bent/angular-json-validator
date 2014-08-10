@@ -1,0 +1,29 @@
+{
+  "name": "angular-json-validator",
+  "version": "0.0.0",
+  "homepage": "https://github.com/bent/angular-json-validator",
+  "authors": [
+    "Ben Teese <ben.teese@gmail.com>"
+  ],
+  "description": "JSON validation tools for use with Angular.js",
+  "main": "angular-json-validator.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "Angular",
+    "JSON",
+    "Schema",
+    "Validator",
+    "Validation",
+    "Angular.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
