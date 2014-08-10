@@ -9,8 +9,10 @@
     "karma-chrome-launcher": "~0.1.4"
   },
   "scripts": {
+  	"karma": "./node_modules/karma/bin/karma start",
   	"test": "./node_modules/karma/bin/karma start --single-run",
-  	"build": "./node_modules/.bin/gulp build",
-  	"watch": "./node_modules/.bin/gulp watch"
+  	"js": "./node_modules/.bin/gulp js",
+  	"watch": "./node_modules/.bin/gulp watch",
+  	"build": "npm run test;npm run js"
   }
 }

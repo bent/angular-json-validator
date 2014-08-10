@@ -8,11 +8,11 @@ var jsGlobs = [
   // to it
   'src/json-validator.js',
   'src/**/*.js',
-  // Don't include tests in the build
+  // Don't include tests in the js
   '!src/**/*_test.js'
 ];
 
-gulp.task('build', function () {
+gulp.task('js', function () {
   gulp.src(jsGlobs)
     .pipe(sourcemaps.init())
     .pipe(ngAnnotate())
@@ -21,6 +21,6 @@ gulp.task('build', function () {
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('watch', ['build'], function () {
-  gulp.watch(jsGlobs, ['build']);
+gulp.task('watch', ['js'], function () {
+  gulp.watch(jsGlobs, ['js']);
 });
