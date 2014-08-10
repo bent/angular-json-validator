@@ -27,6 +27,8 @@
     "tests"
   ],
   "dependencies": {
-    "tv4": "~1.0.17"
+    "tv4": "~1.0.17",
+    "angular": "~1.2.21",
+    "angular-mocks": "~1.2.21"
   }
 }
