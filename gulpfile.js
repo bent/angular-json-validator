@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate'),
     sourcemaps = require('gulp-sourcemaps');
 
-var plainJsGlobs = [
+var jsGlobs = [
   // Explicitly load the module first to ensure that it is defined before we attempt to add anything
   // to it
   'src/json-validator.js',
@@ -12,8 +12,8 @@ var plainJsGlobs = [
   '!src/**/*_test.js'
 ];
 
-gulp.task('js', function () {
-  gulp.src(plainJsGlobs)
+gulp.task('build', function () {
+  gulp.src(jsGlobs)
     .pipe(sourcemaps.init())
     .pipe(ngAnnotate())
     .pipe(concat('json-validator.js'))
@@ -21,6 +21,6 @@ gulp.task('js', function () {
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('watch', ['js'], function () {
-  gulp.watch(plainJsGlobs, ['js']);
+gulp.task('watch', ['build'], function () {
+  gulp.watch(jsGlobs, ['build']);
 });
