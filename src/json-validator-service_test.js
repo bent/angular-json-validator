@@ -1,5 +1,5 @@
 describe("jsonValidator", function () {
-  beforeEach(module("jsonValidator"));
+  beforeEach(module("bt.jsonValidator"));
 
   var jsonValidator, jsonSchemaCache, $rootScope,resolved, rejected, $httpBackend;
 

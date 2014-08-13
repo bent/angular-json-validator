@@ -1,4 +1,4 @@
-angular.module("jsonValidator").factory("jsonValidator", function (
+angular.module("bt.jsonValidator").factory("jsonValidator", function (
   $q, $injector, $window, jsonSchemaCache
 ) {
   // Because TV4 can only report _all_ missing URIs (rather than just those missing for a

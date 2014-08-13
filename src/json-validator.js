@@ -1,1 +1,1 @@
-angular.module("jsonValidator", []);
+angular.module("bt.jsonValidator", []);

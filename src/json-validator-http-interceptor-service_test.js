@@ -1,5 +1,5 @@
 describe("jsonValidatorHttpInterceptor", function () {
-  beforeEach(module("jsonValidator"));
+  beforeEach(module("bt.jsonValidator"));
 
   var jsonValidatorHttpInterceptor, jsonValidator, $window, $rootScope, returnValue, deferred,
     config, resolved, rejected;

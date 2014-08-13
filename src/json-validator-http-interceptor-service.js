@@ -1,4 +1,4 @@
-angular.module("jsonValidator").factory("jsonValidatorHttpInterceptor", function (
+angular.module("bt.jsonValidator").factory("jsonValidatorHttpInterceptor", function (
   $q, jsonValidator, $window
 ) {
   return {
