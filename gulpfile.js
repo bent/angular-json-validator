@@ -16,7 +16,7 @@ gulp.task('js', function () {
   gulp.src(jsGlobs)
     .pipe(sourcemaps.init())
     .pipe(ngAnnotate())
-    .pipe(concat('json-validator.js'))
+    .pipe(concat('angular-json-validator.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('.'));
 });
