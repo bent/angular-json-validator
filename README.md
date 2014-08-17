@@ -12,12 +12,12 @@ Installation
 
 1. Install with [bower](http://bower.io/):
 
-    bower install angular-json-validator
+        bower install angular-json-validator
     
-  Or manually download 
-  [`angular-json-validator.js`](https://github.com/bent/angular-json-validator/blob/master/angular-json-validator.js) and
-  [`tv4.js`](https://github.com/geraintluff/tv4/blob/master/tv4.js) or
-  [`tv4.min.js`](https://github.com/geraintluff/tv4/blob/master/tv4.min.js).
+   Or manually download 
+   [`angular-json-validator.js`](https://github.com/bent/angular-json-validator/blob/master/angular-json-validator.js) and
+   [`tv4.js`](https://github.com/geraintluff/tv4/blob/master/tv4.js) or
+   [`tv4.min.js`](https://github.com/geraintluff/tv4/blob/master/tv4.min.js).
 
 2. Include the JS files in your project. `angular-json-validator.js` should be loaded after `angular.js`.
 3. If you want to use the HTTP Interceptor, add `bt.jsonValidator` as a dependency of your application module. For example:
