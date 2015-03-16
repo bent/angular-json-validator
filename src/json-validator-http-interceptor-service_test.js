@@ -65,14 +65,14 @@ describe("jsonValidatorHttpInterceptor", function () {
           var error;
 
           beforeEach(function() {
-            spyOn(window.console, 'error');
+            spyOn($window.console, 'error');
             error = {};
             deferred.reject(error);
             $rootScope.$digest();
           });
 
           it('logs the error to the console', function() {
-            expect(window.console.error).toHaveBeenCalledWith(error);
+            expect($window.console.error).toHaveBeenCalledWith(error);
           });
 
           it('rejects with the config', function() {
@@ -129,14 +129,14 @@ describe("jsonValidatorHttpInterceptor", function () {
           var error;
 
           beforeEach(function() {
-            spyOn(window.console, 'error');
+            spyOn($window.console, 'error');
             error = {};
             deferred.reject(error);
             $rootScope.$digest();
           });
 
           it('logs the error to the console', function() {
-            expect(window.console.error).toHaveBeenCalledWith(error);
+            expect($window.console.error).toHaveBeenCalledWith(error);
           });
 
           it('rejects with the response', function() {
