@@ -1,32 +1,26 @@
 describe("jsonValidator", function () {
   beforeEach(module("bt.jsonValidator"));
 
-  var jsonValidator, jsonSchemaCache, $rootScope,resolved, rejected, $httpBackend;
+  var jsonValidator, jsonSchemaCache, $rootScope,resolve, reject, $httpBackend;
 
   function validate(object) {
-    jsonValidator.validateJson(object, 'schema.json').then(function(object) {
-      resolved = object;
-    }, function(object) {
-      rejected = object;
-    });
-
+    jsonValidator.validateJson(object, 'schema.json').then(resolve, reject);
     $rootScope.$digest();
   }
 
   function expectResolved(object) {
-    expect(rejected).toBeUndefined();
-    expect(resolved).toBe(object);
+    expect(reject).not.toHaveBeenCalled();
+    expect(resolve).toHaveBeenCalledWith(object);
   }
 
   function expectRejected() {
-    expect(rejected).toBeDefined();
-    expect(resolved).toBeUndefined();
+    expect(reject).toHaveBeenCalled();
+    expect(resolve).not.toHaveBeenCalled();
   }
 
-
   beforeEach(inject(function(_jsonValidator_, _jsonSchemaCache_, _$rootScope_, _$httpBackend_) {
-    resolved = undefined;
-    rejected = undefined;
+    resolve = jasmine.createSpy();
+    reject = jasmine.createSpy();
 
     tv4.dropSchemas();
     jsonValidator = _jsonValidator_;
@@ -217,8 +211,6 @@ describe("jsonValidator", function () {
       });
 
       it('does not try to fetch with HTTP again if validated again', function() {
-        resolved = undefined;
-        rejected = undefined;
         validate(object);
         expectResolved(object);
       });

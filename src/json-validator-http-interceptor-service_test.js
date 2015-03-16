@@ -2,9 +2,7 @@ describe("jsonValidatorHttpInterceptor", function () {
   beforeEach(module("bt.jsonValidator"));
 
   var jsonValidatorHttpInterceptor, jsonValidator, $window, $rootScope, returnValue, deferred,
-    config, resolved, rejected;
-
-
+    config, resolve, reject;
 
   beforeEach(inject(function(
       _jsonValidatorHttpInterceptor_, _jsonValidator_, _$window_, $q, _$rootScope_
@@ -14,8 +12,8 @@ describe("jsonValidatorHttpInterceptor", function () {
     $window = _$window_;
     $rootScope = _$rootScope_;
     config = {};
-    resolved = false;
-    rejected = false;
+    resolve = jasmine.createSpy();
+    reject = jasmine.createSpy();
     deferred = $q.defer();
     returnValue = undefined;
 
@@ -44,21 +42,14 @@ describe("jsonValidatorHttpInterceptor", function () {
         beforeEach(function() {
           returnValue = jsonValidatorHttpInterceptor.request(config);
           expect(jsonValidator.validateJson).toHaveBeenCalledWith(requestData, 'schemaUri');
-
-          returnValue.then(function(returnConfig) {
-            resolved = true;
-            expect(returnConfig).toBe(config);
-          }, function(returnConfig) {
-            rejected = true;
-            expect(returnConfig).toBe(config);
-          });
+          returnValue.then(resolve, reject);
         });
 
         it('resolves with the config if the schema matches', function() {
           deferred.resolve();
           $rootScope.$digest();
-          expect(resolved).toBe(true);
-          expect(rejected).toBe(false);
+          expect(resolve).toHaveBeenCalledWith(config);
+          expect(reject).not.toHaveBeenCalled();
         });
 
         describe('and does not match schema', function() {
@@ -76,8 +67,8 @@ describe("jsonValidatorHttpInterceptor", function () {
           });
 
           it('rejects with the config', function() {
-            expect(resolved).toBe(false);
-            expect(rejected).toBe(true);
+            expect(resolve).not.toHaveBeenCalled();
+            expect(reject).toHaveBeenCalledWith(config);
           });
         });
       });
@@ -109,20 +100,14 @@ describe("jsonValidatorHttpInterceptor", function () {
           returnValue = jsonValidatorHttpInterceptor.response(response);
           expect(jsonValidator.validateJson).toHaveBeenCalledWith(responseData, 'schemaUri');
 
-          returnValue.then(function(returnResponse) {
-            resolved = true;
-            expect(returnResponse).toBe(response);
-          }, function(returnResponse) {
-            rejected = true;
-            expect(returnResponse).toBe(response);
-          });
+          returnValue.then(resolve, reject);
         });
 
         it('resolves with the response if the schema matches', function() {
           deferred.resolve();
           $rootScope.$digest();
-          expect(resolved).toBe(true);
-          expect(rejected).toBe(false);
+          expect(resolve).toHaveBeenCalledWith(response);
+          expect(reject).not.toHaveBeenCalled();
         });
 
         describe('and does not match schema', function() {
@@ -140,8 +125,8 @@ describe("jsonValidatorHttpInterceptor", function () {
           });
 
           it('rejects with the response', function() {
-            expect(resolved).toBe(false);
-            expect(rejected).toBe(true);
+            expect(resolve).not.toHaveBeenCalled();
+            expect(reject).toHaveBeenCalledWith(response);
           });
         });
       });
